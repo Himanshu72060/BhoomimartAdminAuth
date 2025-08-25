@@ -64,14 +64,14 @@ router.get("/:id", auth, async (req, res) => {
 });
 
 // ✅ Update admin
-router.put("/:id", auth, async (req, res) => {
-    const { name, email, password } = req.body;
-    let updateData = { name, email };
-    if (password) updateData.password = await bcrypt.hash(password, 10);
+// router.put("/:id", auth, async (req, res) => {
+//     const { name, email, password } = req.body;
+//     let updateData = { name, email };
+//     if (password) updateData.password = await bcrypt.hash(password, 10);
 
-    const updatedAdmin = await Admin.findByIdAndUpdate(req.params.id, updateData, { new: true }).select("-password");
-    res.json(updatedAdmin);
-});
+//     const updatedAdmin = await Admin.findByIdAndUpdate(req.params.id, updateData, { new: true }).select("-password");
+//     res.json(updatedAdmin);
+// });
 
 // ✅ Delete admin
 router.delete("/:id", auth, async (req, res) => {
